@@ -10,14 +10,22 @@ class MusclesController < ApplicationController
     redirect_to muscles_path
   end
 
+  def destroy
+    @muscle = Muscle.find(params[:id])
+    @muscle.destroy
+    redirect_to muscles_path
+  end
+
   def index
+    @muscles = Muscle.all
   end
 
   def show
+    @muscle = Muscle.find(params[:id])
   end
 
   private
   def muscle_params
-    params.require(:muscle).permit(:title, :image, :title)
+    params.require(:muscle).permit(:title, :image, :caption)
   end
 end

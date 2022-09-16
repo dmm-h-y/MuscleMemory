@@ -1,0 +1,18 @@
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <h3><%= @user.name %></h3>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+  <% end %>
+</div>
+
+<% @muscles.each do |muscle| %>
+<div>
+  <%= image_tag muscle.get_image %>
+  <p>タイトル: <%= muscle.title %></p>
+  <p>投稿者: <%= muscle.user.name %></p>
+</div>
+<% end %>
+
+
+

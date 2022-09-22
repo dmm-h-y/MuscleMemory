@@ -1,18 +1,70 @@
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h3><%= @user.name %></h3>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
-  <% end %>
-</div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/assets/muscles.css" rel="stylesheet" />
+  </head>
 
-<% @muscles.each do |muscle| %>
-<div>
-  <%= image_tag muscle.get_image %>
-  <p>タイトル: <%= muscle.title %></p>
-  <p>投稿者: <%= muscle.user.name %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2.px-0">
+      <%= render "info", user: @user  %>
+    </div>
+    <div class="col-sm-10">
+      <% @muscles.each do |muscle| %>
+        <div class="mainWrap">
+          <div class="row">
+            <div class="col-sm-2">
+               <%= image_tag muscle.get_image, class: 'img_fluid' %>
+            </div>
+            <div class="col-sm-10">
+              <h2><%= link_to muscle.title, muscle_path(muscle.id) %></h2>
+              <div>
+                <h4><%= muscle.caption %></h4>
+              </div>
+            
+            <!--レビュー評価追加-->
+            <div id="rate-rate<%= muscle.id %>">
+              <script>
+                $('#rate-rate<%= muscle.id %>').raty({
+                  size     : 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  half: false,
+                  readOnly: true,
+                  score: <%= muscle.rate %>,
+                });
+              </script>  
+            </div>
+            </div>
+            
+            <div class="col-sm-12 text-right">
+              <i class="far fa-clock"></i> <%= muscle.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+
+
+
+
+      <!--% @muscles.each do |muscle| %>
+      <div>
+        < %= image_tag muscle.get_image %>
+        <p>タイトル: < %= muscle.title %></p>
+        <p>投稿者: < %= muscle.user.name %></p>
+      </div>
+      < % end %-->
+
+
+    </div>
+  </div>
 </div>
-<% end %>
 
 
 

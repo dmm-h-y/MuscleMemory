@@ -22,10 +22,11 @@ class MusclesController < ApplicationController
 
   def show
     @muscle = Muscle.find(params[:id])
+    @user = @muscle.user
   end
 
   private
   def muscle_params
-    params.require(:muscle).permit(:title, :image, :caption)
+    params.require(:muscle).permit(:title, :image, :caption, :rate)
   end
 end

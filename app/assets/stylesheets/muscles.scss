@@ -17,12 +17,32 @@
 
 .mainWrap {border-radius: 4px;}
 
-.nav-item-side {
+.sidebar-box {
   /*margin: auto;*/
   text-align: center;
-  margin: 10px;
 }
+
+/*header {
+  border-bottom: solid 1px #696969;
+}*/
 
 .navbar {
   background: #EEEEEE;
 }
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  /*transition: margin 0.25s ease-out;*/
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  width: 15rem;
+  margin-left: 0;
+  background: #EEEEEE;
+}
+
+.sidebar-list-item {
+  margin: 10px;
+}
+

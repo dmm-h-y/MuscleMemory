@@ -60,3 +60,4 @@ gem 'net-imap'
 gem 'net-pop'
 
 gem 'devise'
+gem 'ransack'

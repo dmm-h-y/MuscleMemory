@@ -9,29 +9,107 @@
   </head>
 
 <div class="d-flex" id="wrapper">
-   <%= render "users/info", user: @user  %>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2.px-0">
+<%= render "users/info", user: @user  %>
 
+
+  <!--div class="d-flex flex-column"><これのせい-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-10">
+        <div class="mainWrap">
+          <div class="row">
+            <div class="col-sm-3">
+              <%= image_tag @muscle.get_image(100,100), style: "width: 150px; height: 150px;" %>
+            </div>
+            <div class="col-sm-9">
+              <h1><%= @muscle.title %></h1>
+
+              <div id="rate-rate<%= @muscle.id %>">
+                <script>
+                  $('#rate-rate<%= @muscle.id %>').raty({
+                    size     : 36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    half: false,
+                    readOnly: true,
+                    score: <%= @muscle.rate %>,
+                  });
+                </script>
+              </div>
+
+              <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
+              <p>投稿者: < %= @muscle.user.name %></p-->
+              <div class="col-sm-12 text-right">
+                <p>投稿日: <%= @muscle.created_at.strftime('%Y/%m/%d') %></p>
+                <% if @muscle.user == current_user %>
+                  <%= link_to "編集", edit_muscle_path(@muscle.id) %>
+                  <%= link_to "削除", muscle_path(@muscle), method: :delete %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
       </div>
-      <div class="col-sm-10">
-       <!--div-->
-          <%= image_tag @muscle.get_image %>
-          <p>タイトル: <%= @muscle.title %></p>
-          <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
-          <p>投稿者: < %= @muscle.user.name %></p-->
-          <p>投稿日: <%= @muscle.created_at.strftime('%Y/%m/%d') %></p>
-          <% if @muscle.user == current_user %>
-            <%= link_to "削除", muscle_path(@muscle), method: :delete %>
-          <% end %>
-        <!--/div-->
+
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="mainWrap">
+            <div class="col-sm-12 text-center">
+              <h2><i class="fa fa-hand-point-down"></i>ポイント</h2>
+            </div>
+            <h3><%= @muscle.caption %></h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+      <%= form_with model: [@muscle, @muscle_comment] do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= f.submit "送信" %>
+      <% end %>
+      </div>
+
+
+
+      <div class="row">
+        <% @muscle.muscle_comments.each do |muscle_comment| %>
+        <div class="col-sm-1">
+           <%= image_tag muscle_comment.user.get_profile_image(100,100), style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
+        </div>
+        <div class="col-sm-8">
+          <%= muscle_comment.user.name %>
+          <%= muscle_comment.comment %>
+        </div>
+        <% end %>
+      </div>
+
+
+
+    </div>
+
+
+    <!--div class="container">
+      <div class="row">
+        <  % @muscle.muscle_comments.each do |muscle_comment| %>
+        <div class="col-sm-2.px-0">
+           <  %= image_tag muscle_comment.user.get_profile_image(100,100) %>
+        </div>
+        <div class="col-sm-8">
+          <  %= muscle_comment.user.name %>
+          <  %= muscle_comment.comment %>
+        </div>
+        <  % end %>
       </div>
     </div>
-  </div>
+    <div>
+      <  %= form_with model: [@muscle, @muscle_comment] do |f| %>
+        <  %= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <  %= f.submit "送信" %>
+      <  % end %>
+    </div>
+  </div-->
 </div>
-
-
 
 
 

@@ -10,6 +10,12 @@ class MusclesController < ApplicationController
     redirect_to muscles_path
   end
 
+  def update
+    muscle = Muscle.find(params[:id])
+    muscle.update(muscle_params)
+    redirect_to muscle_path(muscle.id)
+  end
+
   def destroy
     @muscle = Muscle.find(params[:id])
     @muscle.destroy
@@ -23,6 +29,11 @@ class MusclesController < ApplicationController
   def show
     @muscle = Muscle.find(params[:id])
     @user = @muscle.user
+    @muscle_comment = MuscleComment.new
+  end
+
+  def edit
+    @muscle = Muscle.find(params[:id])
   end
 
   private

@@ -6,14 +6,20 @@ class MusclesController < ApplicationController
   def create
     @muscle = Muscle.new(muscle_params)
     @muscle.user_id = current_user.id
-    @muscle.save
-    redirect_to muscles_path
+    if @muscle.save
+      redirect_to muscles_path
+    else
+      render :new
+    end
   end
 
   def update
     muscle = Muscle.find(params[:id])
-    muscle.update(muscle_params)
-    redirect_to muscle_path(muscle.id)
+    if muscle.update(muscle_params)
+      redirect_to muscle_path(muscle.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -23,7 +29,14 @@ class MusclesController < ApplicationController
   end
 
   def index
-    @muscles = Muscle.all
+    #@muscles = Muscle.all
+    @muscles = Muscle.page(params[:page])
+    
+   # @search = Muscle.ransack(params[:q])
+    #@search_muscles = @search.result
+    #if @search_header
+      #@search_muscles = @search_header.result
+    #end
   end
 
   def show

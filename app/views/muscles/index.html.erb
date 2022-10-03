@@ -8,11 +8,11 @@
     <link href="/assets/muscles.css" rel="stylesheet" />
   </head>
 
-<% if @search_muscles %>
-  <% render partial: 'muscles/muscle', collection: @search_muscles %>
-<% else %>
-  <% render partial: 'muscles/muscle', collection: @muscles %>
-<% end %>
+<!--% if @search_muscles %>
+  <  % render partial: 'muscles/muscle', collection: @search_muscles %>
+<  % else %>
+  <  % render partial: 'muscles/muscle', collection: @muscles %>
+<  % end %-->
 
 
 <div class="d-flex" id="wrapper">
@@ -21,24 +21,24 @@
   <div class="container"><!---fluid-->
     <div class="row">
       <div class="col-sm-2.px-0">
-        
+
       </div>
       <div class="col-sm-10">
         <div class="col-sm-12 text-center">
           <h2>レビュー一覧</h2>
         </div>
-        <% @muscles.each do |muscle| %>
+        <% @search_muscles.each do |muscle| %><!--search-->
         <div class="mainWrap">
           <div class="row">
             <div class="col-sm-2">
               <%= image_tag muscle.get_image(100,100) %><!--, class: 'img_fluid'-->
             </div>
             <div class="col-sm-10">
-              <h2><%= link_to muscle.title, muscle_path(muscle.id) %></h2>
+              <h2><%= link_to muscle.title, muscle_path(muscle.id), {class: "link"} %></h2>
               <div>
                 <h4><%= muscle.caption %></h4>
               </div>
-            
+
             <!--レビュー評価追加-->
             <div id="rate-rate<%= muscle.id %>">
               <script>
@@ -50,21 +50,23 @@
                   readOnly: true,
                   score: <%= muscle.rate %>,
                 });
-              </script>  
+              </script>
             </div>
             </div>
-            
+
             <div class="col-sm-12 text-right">
               <%= muscle.user.name %>
+              <i class="far fa-comment-alt"></i> <%= muscle.muscle_comments.count %>
               <i class="far fa-clock"></i> <%= muscle.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %>
             </div>
           </div>
         </div>
+        
         <% end %>
+        <%= paginate @muscles %>
+        
       </div>
-
     </div>
   </div>
-  
-</div>  
+</div>
 

@@ -3,6 +3,10 @@ class Muscle < ApplicationRecord
   belongs_to :user
   has_many :muscle_comments, dependent: :destroy
 
+  validates :title, presence: true
+  validates :caption, presence: true
+
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

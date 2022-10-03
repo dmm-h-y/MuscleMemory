@@ -40,10 +40,10 @@
               <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
               <p>投稿者: < %= @muscle.user.name %></p-->
               <div class="col-sm-12 text-right">
-                <p>投稿日: <%= @muscle.created_at.strftime('%Y/%m/%d') %></p>
+                <i class="far fa-clock"></i> <%= @muscle.created_at.strftime('%Y/%m/%d') %><br>
                 <% if @muscle.user == current_user %>
                   <%= link_to "編集", edit_muscle_path(@muscle.id) %>
-                  <%= link_to "削除", muscle_path(@muscle), method: :delete %>
+                  <%= link_to "削除", muscle_path(@muscle), method: :delete, "data-confirm" => "本当に消しますか？" %>
                 <% end %>
               </div>
             </div>
@@ -56,31 +56,42 @@
         <div class="col-sm-10">
           <div class="mainWrap">
             <div class="col-sm-12 text-center">
-              <h2><i class="fa fa-hand-point-down"></i>ポイント</h2>
+              <h2><i class="fas fa-hand-point-up"></i>ポイント</h2>
             </div>
-            <h3><%= @muscle.caption %></h3>
+            <h3><%= safe_join(@muscle.caption.split("\n"),tag(:br)) %></h3>
+            <!--< %= @muscle.caption %>-->
           </div>
         </div>
       </div>
 
       <div class="row">
-      <%= form_with model: [@muscle, @muscle_comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信" %>
-      <% end %>
+        <div class="comment-box">
+          <%= form_with model: [@muscle, @muscle_comment] do |f| %>
+            <%= f.text_area :comment, size: "40x5", placeholder: "コメントをここに入力して下さい" %><!-- rows: '5'-->
+            <%= f.submit "送信" %>
+          <% end %>
+        </div>
       </div>
 
 
-
-      <div class="row">
+      <div class="row"><!---->
+        <div class="col-sm-12">
+          <h3>コメント一覧</h3>
+        </div>
         <% @muscle.muscle_comments.each do |muscle_comment| %>
         <div class="col-sm-1">
            <%= image_tag muscle_comment.user.get_profile_image(100,100), style: "border-radius: 50%; width: 70px; height: 70px; object-fit:cover;" %>
         </div>
-        <div class="col-sm-8">
-          <%= muscle_comment.user.name %>
-          <%= muscle_comment.comment %>
+        <div class="col-sm-7">
+          <div class="balloon">
+            <%= link_to muscle_comment.user.name, user_path(muscle_comment.user.id) %><br>
+            <%= muscle_comment.comment %>
+            <div class="col-sm-12 text-right">
+              <i class="far fa-clock"></i> <%= muscle_comment.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %>
+            </div>
+          </div>
         </div>
+        <div class="col-sm-4"></div>
         <% end %>
       </div>
 

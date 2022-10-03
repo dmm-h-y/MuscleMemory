@@ -1,3 +1,18 @@
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/assets/muscles.css" rel="stylesheet" />
+  </head>
+
+
+
+
+
+
 <h1>編集画面</h1>
 
 <%= form_with model: @muscle, url: muscle_path(@muscle.id), method: :patch do |f| %>
@@ -7,8 +22,8 @@
   <h4>タイトル</h4>
   <%= f.text_field :title %>
 
-  <h4>イチオシポイント</h4>
-  <%= f.text_field :caption %>
+  <h4>ポイント</h4>
+  <%= f.text_area :caption, size: "40x10" %>
 
       <div class="form-group row" id="rate">
         <%= f.label :rate,'おすすめ度', class:'col-md-2 col-form-label' %>

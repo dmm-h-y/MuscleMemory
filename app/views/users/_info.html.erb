@@ -6,7 +6,9 @@
     <div class="sidebar-list-item"><%= link_to "投稿する", new_muscle_path %></div>
     <div class="sidebar-list-item"><%= link_to "レビュー一覧", muscles_path %></div>
     <div class="sidebar-list-item"><%= link_to "マイページ", user_path(current_user.id) %></div>
-    <div class="sidebar-list-item"><%= link_to "設定", edit_user_path(user) %></div>
+    <% if user.name != "ゲスト" %>
+      <div class="sidebar-list-item"><%= link_to "設定", edit_user_path(user) %></div>
+    <% end %>
   </div>
 </div>
 

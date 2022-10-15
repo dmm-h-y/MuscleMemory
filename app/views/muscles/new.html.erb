@@ -38,6 +38,12 @@
           half: false,
         });
       </script>
+      
+      <div>
+        <p>カテゴリー: <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %></p>
+      </div>
+      
+      
       <%= f.button '投稿', type: 'button', onclick: 'submit();' %><!--< %= f.submit '投稿' %>-->
 
   <% end %>

@@ -18,6 +18,12 @@
     <div class="col-sm-10">
       <div class="col-sm-12 text-center">
         <h2><%= @user.name %>さんの投稿一覧</h2>
+        
+        <% if current_user.admin? %>
+          <%= link_to "ユーザーを削除する", user_path(@user), method: :delete, "data-confirm" => "本当にユーザーを削除しますか？" %>
+        <% end %>
+        
+        
       </div>
       <% @muscles.each do |muscle| %>
         <div class="mainWrap">

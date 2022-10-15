@@ -36,12 +36,20 @@
                   });
                 </script>
               </div>
-
+              
+              
+              <div class="col-sm-12 text-right">
+                <% @muscle.labels.each do |label| %>
+                  <i class="fas fa-tag"></i><%= label.name %>
+                <% end %>
+              </div>
+              
+              
               <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
               <p>投稿者: < %= @muscle.user.name %></p-->
               <div class="col-sm-12 text-right">
                 <i class="far fa-clock"></i> <%= @muscle.created_at.strftime('%Y/%m/%d') %><br>
-                <% if @muscle.user == current_user %>
+                <% if @muscle.user == current_user || current_user.admin? %>
                   <%= link_to "編集", edit_muscle_path(@muscle.id) %>
                   <%= link_to "削除", muscle_path(@muscle), method: :delete, "data-confirm" => "本当に消しますか？" %>
                 <% end %>

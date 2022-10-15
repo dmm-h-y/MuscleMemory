@@ -31,6 +31,7 @@ class MusclesController < ApplicationController
   def index
     #@muscles = Muscle.all
     @muscles = Muscle.page(params[:page])
+    @muscles = @muscles.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     
    # @search = Muscle.ransack(params[:q])
     #@search_muscles = @search.result
@@ -51,6 +52,6 @@ class MusclesController < ApplicationController
 
   private
   def muscle_params
-    params.require(:muscle).permit(:title, :image, :caption, :rate)
+    params.require(:muscle).permit(:title, :image, :caption, :rate, { label_ids: []})
   end
 end

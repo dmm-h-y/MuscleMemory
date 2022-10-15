@@ -24,9 +24,10 @@
             <% if user_signed_in? %>
             <dl class="searchbox ml-auto">
               <%= search_form_for @search, url: muscles_path do |f| %>
-                <dt><%= f.search_field :title_cont, placeholder: 'タイトルを入力...' %></dt>
+                <dt><%= f.search_field :title_or_labels_name_cont, placeholder: 'ワードを入力...' %></dt><!--:title_cont-->
                 <dd><%= f.submit ("検索"), class: 'search-btn' %></dd>
               <% end %>
+
             </dl>
             <% end %>
 

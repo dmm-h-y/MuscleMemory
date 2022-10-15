@@ -20,9 +20,19 @@
     <div class="container">
       <div class="masthead-subheading">Muscle Memory</div>
       <div class="masthead-heading text-uppercase">Welcom To Muscle World!</div>
-      <a class="btn btn-primary btn-xl text-uppercase" href="/users/sign_in">ログインしマッスル</a>
-      <a class="btn btn-primary btn-xl text-uppercase" href="/users/sign_up">サインインしマッスル</a>
+      
+    </div> 
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-4"><a class="btn btn-primary btn-xl text-uppercase" href="/users/sign_in">ログインしマッスル</a></div>
+        <div class="col-4"><a class="btn btn-primary btn-xl text-uppercase" href="/users/sign_up">サインインしマッスル</a></div>
+        <div class="col-4">
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "btn btn-primary btn-xl text-uppercase", method: :post %>
+        </div>
+      </div>
     </div>
+    
   </header>
 </html>
 

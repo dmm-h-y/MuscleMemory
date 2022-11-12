@@ -50,8 +50,8 @@
               <div class="col-sm-12 text-right">
                 <i class="far fa-clock"></i> <%= @muscle.created_at.strftime('%Y/%m/%d') %><br>
                 <% if @muscle.user == current_user || current_user.admin? %>
-                  <%= link_to "編集", edit_muscle_path(@muscle.id) %>
-                  <%= link_to "削除", muscle_path(@muscle), method: :delete, "data-confirm" => "本当に消しますか？" %>
+                  <%= link_to "編集", edit_muscle_path(@muscle.id), class: "btn btn-sm btn-success" %>
+                  <%= link_to "削除", muscle_path(@muscle), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
                 <% end %>
               </div>
             </div>
@@ -76,7 +76,7 @@
         <div class="comment-box">
           <%= form_with model: [@muscle, @muscle_comment] do |f| %>
             <%= f.text_area :comment, size: "40x5", placeholder: "コメントをここに入力して下さい" %><!-- rows: '5'-->
-            <%= f.submit "送信" %>
+            <%= f.submit "送信", class: "btn btn-sm btn-success" %>
           <% end %>
         </div>
       </div>

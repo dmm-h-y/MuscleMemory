@@ -11,10 +11,10 @@
 
 
 
-
-<h1>新規投稿</h1>
+<div class="container">
+<h1>レビューを投稿する</h1>
   <%= form_with model: @muscle do |f| %>
-    <h4>イメージ</h4>
+    <h4><i class="fas fa-images"></i>イメージ</h4>
       <%= f.file_field :image, accept: "image/*" %>
     <h4>タイトル</h4>
       <%= f.text_field :title %>
@@ -44,6 +44,8 @@
       </div>
       
       
-      <%= f.button '投稿', type: 'button', onclick: 'submit();' %><!--< %= f.submit '投稿' %>-->
+      <%= f.submit '投稿', class: "btn btn-sm btn-success" %><!--< %= f.button '投稿', type: 'button', onclick: 'submit();' %>  primary-->
+      <%= link_to "戻る", muscles_path, class: "btn btn-sm btn-primary" %>
 
   <% end %>
+  </div>

@@ -9,12 +9,16 @@
   </head>
 
 
-
-<h2>プロフィール編集</h2>
-<%= form_with model: @user do |f| %>
-  <label for="inputName">HN</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName" %>
-  <label for="inputImage">プロフィール画像</label>
-  <%= f.file_field :profile_image, acoept: "image/*" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container">
+  
+  <h1>プロフィール編集</h1>
+  <%= form_with model: @user do |f| %>
+    <label for="inputName">HN</label>
+    <%= f.text_field :name, autofocus: true, id:"inputName" %>
+    <label for="inputImage">プロフィール画像</label>
+    <%= f.file_field :profile_image, acoept: "image/*" %>
+    <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+    <%= link_to "戻る", muscles_path, class: "btn btn-sm btn-primary" %>
+  <% end %>
+  
+</div>

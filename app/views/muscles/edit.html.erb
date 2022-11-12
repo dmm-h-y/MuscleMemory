@@ -12,7 +12,7 @@
 
 
 
-
+<div class="container">
 <h1>編集画面</h1>
 
 <%= form_with model: @muscle, url: muscle_path(@muscle.id), method: :patch do |f| %>
@@ -43,6 +43,8 @@
       </script>
 
 
-  <%= f.submit '保存' %>
+  <%= f.submit '保存', class: "btn btn-sm btn-success" %>
+  <%= link_to "戻る", muscle_path(@muscle.id), class: "btn btn-sm btn-primary" %>
 
 <% end %>
+</div>

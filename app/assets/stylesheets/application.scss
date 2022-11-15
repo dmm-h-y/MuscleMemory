@@ -694,11 +694,11 @@ progress {
 }
 .row > * {
   flex-shrink: 0;
-  width: 100%;
+  /*width: 100%;
   max-width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin-top: var(--bs-gutter-y);
+  margin-top: var(--bs-gutter-y);*/
 }
 
 .col {

@@ -33,6 +33,8 @@ class MusclesController < ApplicationController
     @muscles = Muscle.page(params[:page])
     @muscles = @muscles.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
     
+    @label_list = Label.all
+    
    # @search = Muscle.ransack(params[:q])
     #@search_muscles = @search.result
     #if @search_header
@@ -44,6 +46,9 @@ class MusclesController < ApplicationController
     @muscle = Muscle.find(params[:id])
     @user = @muscle.user
     @muscle_comment = MuscleComment.new
+    
+    @label_list = Label.all
+    @muscle_lists = @muscle.labels
   end
 
   def edit

@@ -16,6 +16,13 @@ class ApplicationController < ActionController::Base
     @search = Muscle.ransack(params[:q])
     @search_muscles = @search.result
   end
+  
+  def search
+    @label_list = Label.all
+    @label = Label.find(params[:label_id])
+    @muscles_search =@label.muscles.all
+    @muscles = Muscle.page(params[:page])
+  end
 
   protected
 

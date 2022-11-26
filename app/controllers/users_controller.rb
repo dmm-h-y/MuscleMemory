@@ -6,6 +6,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #@muscles = @user.muscles
     @muscles = @user.muscles.page(params[:page])
+    
+    #追記
+    @label_list = Label.all
   end
 
   def update

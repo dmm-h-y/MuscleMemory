@@ -20,6 +20,11 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to muscles_path
+  end
 
   private
   def user_params

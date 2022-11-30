@@ -41,6 +41,10 @@
           half: false,
         });
       </script>
+      
+      <div>
+        <p>カテゴリー: <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %></p>
+      </div>
 
 
   <%= f.submit '保存', class: "btn btn-sm btn-success" %>

@@ -6,6 +6,9 @@ class MusclesController < ApplicationController
   def create
     @muscle = Muscle.new(muscle_params)
     @muscle.user_id = current_user.id
+    #AI追加
+    @muscle.score = Language.get_data(muscle_params[:caption])
+    
     if @muscle.save
       redirect_to muscles_path
     else
@@ -32,9 +35,9 @@ class MusclesController < ApplicationController
     #@muscles = Muscle.all
     @muscles = Muscle.page(params[:page])
     @muscles = @muscles.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
-    
+
     @label_list = Label.all
-    
+
    # @search = Muscle.ransack(params[:q])
     #@search_muscles = @search.result
     #if @search_header
@@ -46,7 +49,7 @@ class MusclesController < ApplicationController
     @muscle = Muscle.find(params[:id])
     @user = @muscle.user
     @muscle_comment = MuscleComment.new
-    
+
     @label_list = Label.all
     @muscle_lists = @muscle.labels
   end

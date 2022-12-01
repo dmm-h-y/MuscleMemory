@@ -75,6 +75,10 @@
                 <i class="far fa-comment-alt"></i> <%= muscle.muscle_comments.count %>
                 <i class="far fa-clock"></i> <%= muscle.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d') %><!--updated_at-->
               </div>
+              
+              <div class="col-sm-12 text-right">
+                <p>本文の感情分析スコア[<%= muscle.score %>]</p>
+              </div>
           </div>
           </div>
         

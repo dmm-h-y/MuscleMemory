@@ -15,6 +15,10 @@
       <div class="sidebar-list-item"><%= link_to "設定を変更", edit_user_path(current_user.id) %></div>
     <% end %>
     
+    <% if current_user.admin? %>
+      <i class="fas fa-users"></i><%= link_to "ユーザー一覧", users_path %>
+    <% end %>
+    
       <h5><i class="fas fa-tag"></i>タグ一覧</h5>
       <% label_list.each do |list| %>
       <div class= "container">

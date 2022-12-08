@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
+  def index
+    @user = User.all
+  end
   
   def show
     @user = User.find(params[:id])

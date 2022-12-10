@@ -45,14 +45,12 @@
               </div>
               
               
-              <div class="col-sm-12 text-right">
-                <p>本文の感情分析スコア[<%= @muscle.score %>]</p>  
-              </div>
-              
               <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
               <p>投稿者: < %= @muscle.user.name %></p-->
               <div class="col-sm-12 text-right">
                 <i class="far fa-clock"></i> <%= @muscle.created_at.strftime('%Y/%m/%d') %><br>
+                
+                <p>本文の感情分析スコア[<%= @muscle.score %>]</p>  
                 <% if @muscle.user == current_user || current_user.admin? %>
                   <%= link_to "編集", edit_muscle_path(@muscle.id), class: "btn btn-sm btn-success" %>
                   <%= link_to "削除", muscle_path(@muscle), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>

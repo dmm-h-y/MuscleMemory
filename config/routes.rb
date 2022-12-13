@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: "homes#top"
+  
+  get '/about' => 'homes#about', as: 'about'
   devise_for :users
   resources :muscles do
     resources :muscle_comments, only: [:create, :destroy]

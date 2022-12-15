@@ -9,7 +9,7 @@
   </head>
 
 <div class="d-flex" id="wrapper">
-<%= render "users/info", label_list: @label_list, user: current_user  %><!--user: @user-->
+<%= render "users/info", label_list: @label_list, user: current_user  %>
 
 
   <!--div class="d-flex flex-column"><これのせい-->
@@ -45,8 +45,6 @@
               </div>
               
               
-              <!--p>< %= image_tag @muscle.user.get_profile_image(100,100) %></p>
-              <p>投稿者: < %= @muscle.user.name %></p-->
               <div class="col-sm-12 text-right">
                 <i class="far fa-clock"></i> <%= @muscle.created_at.strftime('%Y/%m/%d') %><br>
                 
@@ -77,14 +75,14 @@
       <div class="row">
         <div class="comment-box">
           <%= form_with model: [@muscle, @muscle_comment] do |f| %>
-            <%= f.text_area :comment, size: "40x5", placeholder: "コメントをここに入力して下さい" %><!-- rows: '5'-->
+            <%= f.text_area :comment, size: "40x5", placeholder: "コメントをここに入力して下さい" %>
             <%= f.submit "送信", class: "btn btn-sm btn-success" %>
           <% end %>
         </div>
       </div>
 
 
-      <div class="row"><!---->
+      <div class="row">
         <div class="col-sm-12">
           <h3>コメント一覧</h3>
         </div>
@@ -104,32 +102,7 @@
         <div class="col-sm-4"></div>
         <% end %>
       </div>
-
-
-
     </div>
-
-
-    <!--div class="container">
-      <div class="row">
-        <  % @muscle.muscle_comments.each do |muscle_comment| %>
-        <div class="col-sm-2.px-0">
-           <  %= image_tag muscle_comment.user.get_profile_image(100,100) %>
-        </div>
-        <div class="col-sm-8">
-          <  %= muscle_comment.user.name %>
-          <  %= muscle_comment.comment %>
-        </div>
-        <  % end %>
-      </div>
-    </div>
-    <div>
-      <  %= form_with model: [@muscle, @muscle_comment] do |f| %>
-        <  %= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <  %= f.submit "送信" %>
-      <  % end %>
-    </div>
-  </div-->
 </div>
 
 

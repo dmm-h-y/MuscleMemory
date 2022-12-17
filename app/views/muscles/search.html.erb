@@ -8,17 +8,12 @@
     <link href="/assets/muscles.scss" rel="stylesheet" />
   </head>
 
-<!--% if @search_muscles %>
-  < % render 'muscles/muscle', muscles: @search_muscles %>
-< % else %>
-  < % render 'muscles/muscle', muscles: @muscles %>
-< % end %-->
 
 
 <div class="d-flex" id="wrapper">
-<%= render "users/info", label_list: @label_list, user: current_user %><!--user: current_user-->
+<%= render "users/info", label_list: @label_list, user: current_user %>
 
-  <div class="container"><!---fluid-->
+  <div class="container">
     <div class="row">
       <div class="col-sm-2.px-0">
 
@@ -28,12 +23,6 @@
           <h2>レビュー一覧</h2>
         </div>
         
-        <!--div>
-          < %= form_with url: muscles_path, method: :get, local: true do |form| %>
-            < %= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
-            < %= form.submit '検索' %>
-          < % end %>
-        </div-->
         
         
        

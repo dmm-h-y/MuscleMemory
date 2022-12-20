@@ -11,7 +11,7 @@
 <div class="d-flex" id="wrapper">
 <%= render "users/info", user: current_user %>
 
-  <div class="container"><!---fluid-->
+  <div class="container">
     <div class="row">
       <div class="col-sm-2.px-0">
 
@@ -30,11 +30,11 @@
         
         
         
-          <% muscles.each do |muscle| %><!--search_--><!--@-->
+          <% muscles.each do |muscle| %>
           <div class="mainWrap">
             <div class="row">
               <div class="col-sm-2">
-                <%= image_tag muscle.get_image(100,100) %><!--, class: 'img_fluid'-->
+                <%= image_tag muscle.get_image(100,100) %>
               </div>
               <div class="col-sm-10">
                 <h2><%= link_to muscle.title, muscle_path(muscle.id), {class: "link"} %></h2>
@@ -72,7 +72,7 @@
           </div>
         
           <% end %>
-          <%= paginate muscles %><!--@-->
+          <%= paginate muscles %>
         
        
         

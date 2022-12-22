@@ -38,11 +38,6 @@ class MusclesController < ApplicationController
 
     @label_list = Label.all
 
-   # @search = Muscle.ransack(params[:q])
-    #@search_muscles = @search.result
-    #if @search_header
-      #@search_muscles = @search_header.result
-    #end
   end
 
   def show

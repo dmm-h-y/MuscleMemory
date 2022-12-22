@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_search #set_
+  before_action :set_search 
   
 
   def after_sign_in_path_for(resource)
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
-  def set_search #set_
+  def set_search 
     @search = Muscle.ransack(params[:q])
     @search_muscles = @search.result
   end

@@ -6,8 +6,8 @@ class MusclesController < ApplicationController
   def create
     @muscle = Muscle.new(muscle_params)
     @muscle.user_id = current_user.id
-    #AI追加
-    @muscle.score = Language.get_data(muscle_params[:caption])
+    #AI追加 修正必要！！
+    #@muscle.score = Language.get_data(muscle_params[:caption])
     
     if @muscle.save
       redirect_to muscles_path
